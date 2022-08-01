@@ -1,0 +1,19 @@
+li{
+    transition: 0.3s;
+    padding-bottom:10px;
+    padding-left: 5px;
+}
+li:hover{
+    background-color: #BBBBBB;
+}
+h5{
+    margin: 0;
+    font-size: 20px;
+}
+p{
+    margin: 0;
+    font-size: 15px;
+}
+#saturs{
+    transition: 0.3s
+}

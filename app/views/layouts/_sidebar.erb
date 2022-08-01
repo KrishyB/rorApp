@@ -1,0 +1,28 @@
+<%=stylesheet_link_tag "drawerStyle" %>
+<div id="sidebar">
+<a href="/home" >Sākumlapa</a>
+<a href="/ievade">Ievade</a>
+</div>
+<div id="filler" style="width: 0;height: 0;" onclick="closeSide()">
+</div>
+
+<span style="font-size:30px;cursor:pointer; white-space: nowrap" onclick="openSide()" >&#9776;</span>
+
+<script>
+function openSide(){
+    let izbidits = "200px";
+    document.getElementById("sidebar").style.width=izbidits;
+    document.getElementById("filler").style.width="100%";
+    document.getElementById("filler").style.height="100%";
+    document.getElementById("filler").setAttribute("onclick","closeSide()");
+    document.getElementById("saturs").style.marginLeft=izbidits;
+}
+function closeSide(){
+    document.getElementById("sidebar").style.width="0";
+    document.getElementById("filler").style.width="0";
+    document.getElementById("filler").style.height="0";
+    document.getElementById("filler").setAttribute("onclick","");
+    document.getElementById("saturs").style.marginLeft="0";
+}
+</script>
+

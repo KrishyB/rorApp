@@ -1,0 +1,60 @@
+<%  content_for(:sidebar) do %>
+  <%= render :partial => "layouts/sidebar" %>
+<% end %>
+<%=stylesheet_link_tag "sakums" %>
+<% content_for :title , "Sākumlapa"%>
+<menu id="context">
+  <div id="izvele">
+    <p>Mainīt</p>
+  </div>
+</menu>
+<script>
+    let selected = 0;
+    document.addEventListener("click",function (){
+      let izvelne = document.getElementById("context");
+      izvelne.style.display = "none";
+      let izvele = document.getElementById("izvele");
+      izvele = izvele.cloneNode(false);
+  });
+
+
+  function mainit(){
+      let el = document.getElementById(selected.toString());
+      let teksts = el.getElementsByTagName('h5')[0].innerHTML;
+      let id = el.id;
+      if (teksts === ('Virsraksts Nr.'+id)){
+          el.getElementsByTagName('h5')[0].innerHTML='Mainīts virsraksts Nr.'+id;
+          el.getElementsByTagName('p')[0].innerHTML='Mainīts saturs Nr.'+id;
+      }
+      else{
+          el.getElementsByTagName('h5')[0].innerHTML='Virsraksts Nr.'+id;
+          el.getElementsByTagName('p')[0].innerHTML='Saturs Nr.'+id;
+      }
+
+  }
+  let izvele = document.getElementById("izvele");
+  izvele.addEventListener("click",mainit);
+</script>
+<div id="saturs">
+  <ul>
+    <% (1..500).each { |i| %>
+
+    <li id="<%= i %>" class="elem" >
+      <h5>Virsraksts Nr.<%= i %></h5>
+      <p>Saturs Nr.<%= i %></p>
+    </li>
+      <script>
+          elements = document.getElementById(<%= i %>);
+          elements.addEventListener("contextmenu",function (e){
+              e.preventDefault();
+              let izvelne = document.getElementById("context");
+              izvelne.style.display = "block";
+              izvelne.style.top = (e.pageY - 30)+"px";
+              izvelne.style.left = (e.pageX)+"px";
+              selected = <%= i %>;
+          });
+
+      </script>
+    <%  } %>
+  </ul>
+</div>

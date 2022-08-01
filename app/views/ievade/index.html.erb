@@ -1,0 +1,52 @@
+<%  content_for(:sidebar) do %>
+  <%= render :partial => "layouts/sidebar" %>
+<% end %>
+<% content_for :title , "Ievade"%>
+<style>
+  .slider{
+      width:100%;
+  }
+  span{
+      white-space: nowrap;
+  }
+</style>
+<div style="width: 50%;min-width: 600px">
+
+<input type="range" min="-100" max="100" value="0" class="slider" id="slider1" />
+  <span id="label1"></span>
+  <br/>
+<input type="range" min="-100" max="100" value="0" class="slider" id="slider2"/>
+  <span id="label2"></span>
+  <script>
+    let slider1 = document.getElementById("slider1");
+    let slider2 = document.getElementById("slider2");
+    let label1 = document.getElementById("label1");
+    let label2 = document.getElementById("label2");
+    label1.innerHTML = slider1.value;
+    label2.innerHTML = slider2.value;
+
+    slider1.oninput = function (){
+        label1.innerHTML = this.value;
+    }
+    slider2.oninput = function (){
+        label2.innerHTML = this.value;
+    }
+  </script>
+</div><br/>
+
+  <label for="attelsIzv">Izvēlēties attēlu:</label>
+  <input type="file" name="image" id="attelsIzv" accept="image/*" />
+<br/>
+<img id="attels" width="50%" style="min-width: 600px">
+<script>
+  document.getElementById("attelsIzv").addEventListener("change",function (Event){
+      const img = document.getElementById("attels");
+      let source = this.files[0];
+      img.src = URL.createObjectURL(source);
+  });
+</script>
+
+
+
+
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorApp</title>
+    <title><%=yield(:title) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div id="header">
+    <%= yield :sidebar%>
+    <p1 style="font-size: 25px;white-space: nowrap;padding-left: 10px"><%=yield(:title) %></p1>
+  </div>
+    <div>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
